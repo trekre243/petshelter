@@ -1,0 +1,75 @@
+
+<div class="row">
+    <div class="col s6 offset-s3">
+        <form (submit)="addPet()">
+            <h5>Know of a pet needing a home?</h5>
+            <div class="input-field ">
+                <input
+                    [(ngModel)]="newPet.name"
+                    #name="ngModel"
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    minlength="3"
+                    (blur)="nameEdited = true"
+                >
+                <label for="name">Name</label>
+                <p *ngIf="nameTaken">A pet with this name already exists</p>
+                <p *ngIf="newPet.name.length == 0 && nameEdited">A name is required</p>
+                <p *ngIf="newPet.name.length < 3 && nameEdited">Name must be at least 3 characters</p>
+            </div>
+            <div class="input-field ">
+                <input
+                    [(ngModel)]="newPet.type"
+                    #type="ngModel"
+                    id="type"
+                    name="type"
+                    type="text"
+                    required
+                    minlength="3"
+                    (blur)="typeEdited = true"
+                >
+                <label for="type">Type</label>
+                <p *ngIf="newPet.type.length == 0 && typeEdited">A type is required</p>
+                <p *ngIf="newPet.type.length < 3 && typeEdited">Type must be at least 3 characters</p>
+            </div>
+            <div class="input-field ">
+                <input
+                    [(ngModel)]="newPet.description"
+                    #description="ngModel"
+                    id="description"
+                    name="description"
+                    type="text"
+                    required
+                    minlength="3"
+                    (blur)="descriptionEdited = true"
+                >
+                <label for="description">Description</label>
+                <p *ngIf="newPet.description.length == 0 && descriptionEdited">A description is required</p>
+                <p *ngIf="newPet.description.length < 3 && descriptionEdited">Description must be at least 3 characters</p>
+            </div>
+            <h5>Skills:</h5>
+            <div class="input-field">
+                <input [(ngModel)]="newPet.skills.skill1" id="skill1" name="skill1" type="text">
+                <label for="skill1">Skill 1</label>
+            </div>
+            <div class="input-field">
+                <input [(ngModel)]="newPet.skills.skill2" id="skill2" name="skill2" type="text">
+                <label for="skill2">Skill 2</label>
+            </div>
+            <div class="input-field">
+                <input [(ngModel)]="newPet.skills.skill3" id="skill3" name="skill3" type="text">
+                <label for="skill3">Skill 3</label>
+            </div>
+            <div class="input-field center-align">
+                <button class="waves-effect waves-light btn red" routerLink="pets">Cancel</button>&nbsp;
+                <button
+                class="waves-effect waves-light btn"
+                type="submit"
+                [disabled]="!name.valid || !type.valid || !description.valid"
+                >Add Pet</button>
+            </div>
+        </form>
+    </div>
+</div>

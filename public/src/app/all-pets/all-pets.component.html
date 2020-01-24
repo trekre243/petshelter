@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col s6 offset-s3">
+        <h5>These pets are looking for a home!</h5>
+        <p><a routerLink="/pets/new">Add a pet to the shelter</a></p>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pet of pets">
+                    <td>{{ pet.name }}</td>
+                    <td>{{ pet.type }}</td>
+                    <td>
+                        <button [routerLink]="['/pets/', pet._id]" class="waves-effect waves-light btn">Details</button>&nbsp;
+                        <button [routerLink]="['/pets/', pet._id, 'edit']" class="waves-effect waves-light btn yellow">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
